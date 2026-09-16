@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAGRID - Hosting Plans</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #070b14;
+      color: white;
+    }
+
+    nav {
+      background: #0b1120;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #17233d;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2196ff;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    nav a:hover {
+      color: #2196ff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #9ca9bd;
+      font-size: 18px;
+    }
+
+    .plans {
+      max-width: 1100px;
+      margin: 30px auto 80px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .plan {
+      background: #0d1526;
+      border: 1px solid #1b3155;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .plan.featured {
+      border: 2px solid #2196ff;
+      transform: translateY(-8px);
+    }
+
+    .plan h2 {
+      color: #2196ff;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 35px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .price span {
+      font-size: 15px;
+      color: #8995a8;
+    }
+
+    .plan ul {
+      list-style: none;
+      margin: 25px 0;
+      line-height: 2;
+      color: #c4cede;
+    }
+
+    .buy {
+      display: inline-block;
+      background: #2196ff;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .buy:hover {
+      background: #087bd4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #68758a;
+      border-top: 1px solid #17233d;
+    }
+
+    @media (max-width: 800px) {
+      .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .plan.featured {
+        transform: none;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">NOVAGRID</div>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="plans.html">Plans</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Hosting Plans</h1>
+    <p>Choose the hosting plan that fits your needs.</p>
+  </section>
+
+  <section class="plans">
+
+    <div class="plan">
+      <h2>Starter</h2>
+
+      <div class="price">
+        ₹99 <span>/month</span>
+      </div>
+
+      <ul>
+        <li>✔ 2 GB RAM</li>
+        <li>✔ 2 CPU Cores</li>
+        <li>✔ 20 GB Storage</li>
+        <li>✔ Basic Support</li>
+        <li>✔ DDoS Protection</li>
+      </ul>
+
+      <a href="#" class="buy">Choose Plan</a>
+    </div>
+
+
+    <div class="plan featured">
+      <h2>Pro</h2>
+
+      <div class="price">
+        ₹199 <span>/month</span>
+      </div>
+
+      <ul>
+        <li>✔ 4 GB RAM</li>
+        <li>✔ 4 CPU Cores</li>
+        <li>✔ 50 GB Storage</li>
+        <li>✔ Priority Support</li>
+        <li>✔ DDoS Protection</li>
+      </ul>
+
+      <a href="#" class="buy">Choose Plan</a>
+    </div>
+
+
+    <div class="plan">
+      <h2>Premium</h2>
+
+      <div class="price">
+        ₹399 <span>/month</span>
+      </div>
+
+      <ul>
+        <li>✔ 8 GB RAM</li>
+        <li>✔ 6 CPU Cores</li>
+        <li>✔ 100 GB Storage</li>
+        <li>✔ Priority Support</li>
+        <li>✔ Advanced Protection</li>
+      </ul>
+
+      <a href="#" class="buy">Choose Plan</a>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 NOVAGRID. All rights reserved.
+  </footer>
+
+</body>
+</html>
