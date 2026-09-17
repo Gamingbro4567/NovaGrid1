@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAGRID - Sign Up</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #070b14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: #0b1120;
+      padding: 18px 8%;
+      border-bottom: 1px solid #17233d;
+    }
+
+    .logo {
+      color: #2196ff;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .signup-container {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .signup-box {
+      width: 100%;
+      max-width: 430px;
+      background: #0d1526;
+      border: 1px solid #1b3155;
+      border-radius: 15px;
+      padding: 35px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8995a8;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 17px;
+      background: #080e1c;
+      border: 1px solid #263958;
+      border-radius: 8px;
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2196ff;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #2196ff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-btn:hover {
+      background: #087bd4;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+      color: #66748a;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #263958;
+    }
+
+    .discord-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      background: #5865f2;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .discord-btn:hover {
+      background: #4752c4;
+    }
+
+    .login {
+      text-align: center;
+      margin-top: 25px;
+      color: #8995a8;
+    }
+
+    .login a {
+      color: #2196ff;
+      text-decoration: none;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #8995a8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #68758a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">NOVAGRID</a>
+  </nav>
+
+  <div class="signup-container">
+
+    <div class="signup-box">
+
+      <h1>Create Account</h1>
+
+      <p class="subtitle">
+        Join NOVAGRID today
+      </p>
+
+      <form>
+
+        <label>Username</label>
+        <input
+          type="text"
+          placeholder="Choose a username"
+          required
+        >
+
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+        >
+
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Create a password"
+          required
+        >
+
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          placeholder="Confirm your password"
+          required
+        >
+
+        <button type="submit" class="signup-btn">
+          Create Account
+        </button>
+
+      </form>
+
+      <div class="divider">
+        OR
+      </div>
+
+      <a href="#" class="discord-btn">
+        Sign Up with Discord
+      </a>
+
+      <p class="login">
+        Already have an account?
+        <a href="login.html">Login</a>
+      </p>
+
+      <a href="index.html" class="back">
+        ← Back to Home
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 NOVAGRID. All rights reserved.
+  </footer>
+
+</body>
+</html>
