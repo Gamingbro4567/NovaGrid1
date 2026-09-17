@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAGRID - Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #070b14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: #0b1120;
+      padding: 18px 8%;
+      border-bottom: 1px solid #17233d;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2196ff;
+      text-decoration: none;
+    }
+
+    .login-container {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: #0d1526;
+      border: 1px solid #1b3155;
+      border-radius: 15px;
+      padding: 35px;
+    }
+
+    .login-box h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8995a8;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 18px;
+      background: #080e1c;
+      border: 1px solid #263958;
+      border-radius: 8px;
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2196ff;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #2196ff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background: #087bd4;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+      color: #66748a;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #263958;
+    }
+
+    .discord-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      background: #5865f2;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .discord-btn:hover {
+      background: #4752c4;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 25px;
+      color: #8995a8;
+    }
+
+    .signup a {
+      color: #2196ff;
+      text-decoration: none;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #8995a8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #68758a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">NOVAGRID</a>
+  </nav>
+
+  <div class="login-container">
+
+    <div class="login-box">
+
+      <h1>Welcome Back</h1>
+
+      <p class="subtitle">
+        Login to your NOVAGRID account
+      </p>
+
+      <form>
+
+        <label>Email</label>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+        >
+
+        <label>Password</label>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          required
+        >
+
+        <button type="submit" class="login-btn">
+          Login
+        </button>
+
+      </form>
+
+      <div class="divider">
+        OR
+      </div>
+
+      <a href="#" class="discord-btn">
+        Continue with Discord
+      </a>
+
+      <p class="signup">
+        Don't have an account?
+        <a href="signup.html">Create Account</a>
+      </p>
+
+      <a href="index.html" class="back">
+        ← Back to Home
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 NOVAGRID. All rights reserved.
+  </footer>
+
+</body>
+</html>
