@@ -1,903 +1,1073 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>NOVAGRID — Premium Game Hosting</title>
-  <meta name="description" content="Fast, reliable and affordable game hosting by NOVAGRID.">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #050914;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    /* NAVBAR */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(5, 9, 20, 0.92);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid #17243d;
-    }
-
-    .nav-inner {
-      height: 75px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #168cff;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #aebbd0;
-      transition: 0.2s;
-      font-size: 15px;
-    }
-
-    .nav-links a:hover {
-      color: #168cff;
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 11px 20px;
-      border-radius: 8px;
-      font-weight: 700;
-      border: 1px solid #23405f;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-
-    .btn-login {
-      color: #dce9f8;
-    }
-
-    .btn-login:hover {
-      border-color: #168cff;
-      color: #168cff;
-    }
-
-    .btn-primary {
-      background: #168cff;
-      border-color: #168cff;
-      color: white;
-      box-shadow: 0 0 25px rgba(22, 140, 255, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: #0878e5;
-      transform: translateY(-2px);
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(22, 140, 255, 0.16), transparent 40%);
-    }
-
-    .hero-content {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 15px;
-      border: 1px solid #21446a;
-      background: #0a1425;
-      border-radius: 30px;
-      color: #65b7ff;
-      font-size: 14px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 8vw, 82px);
-      line-height: 1.05;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: #168cff;
-    }
-
-    .hero p {
-      color: #9eabc0;
-      max-width: 650px;
-      margin: auto;
-      font-size: 18px;
-    }
-
-    .hero-buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .hero-buttons .btn {
-      padding: 14px 25px;
-    }
-
-    /* STATUS */
-
-    .status {
-      padding: 20px 0;
-    }
-
-    .status-box {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #091525;
-      border: 1px solid #183653;
-      padding: 15px;
-      border-radius: 10px;
-      color: #b7c5d8;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 12px #22c55e;
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: #8e9caf;
-    }
-
-    /* PLANS */
-
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .plan {
-      background: #091321;
-      border: 1px solid #182b43;
-      padding: 30px;
-      border-radius: 14px;
-      transition: 0.25s;
-    }
-
-    .plan:hover {
-      transform: translateY(-6px);
-      border-color: #168cff;
-      box-shadow: 0 15px 40px rgba(0, 100, 200, 0.12);
-    }
-
-    .plan.featured {
-      border-color: #168cff;
-      box-shadow: 0 0 30px rgba(22, 140, 255, 0.1);
-    }
-
-    .popular {
-      display: inline-block;
-      background: #168cff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-
-    .plan h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 36px;
-      font-weight: 800;
-      margin: 20px 0;
-    }
-
-    .price small {
-      font-size: 14px;
-      color: #8190a5;
-      font-weight: normal;
-    }
-
-    .features {
-      list-style: none;
-      margin: 25px 0;
-    }
-
-    .features li {
-      color: #aab7ca;
-      padding: 8px 0;
-      border-bottom: 1px solid #142238;
-    }
-
-    .features li::before {
-      content: "✓";
-      color: #168cff;
-      margin-right: 9px;
-    }
-
-    .plan .btn {
-      width: 100%;
-      text-align: center;
-    }
-
-    /* FEATURES */
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .feature {
-      background: #08111f;
-      border: 1px solid #172940;
-      padding: 30px;
-      border-radius: 12px;
-    }
-
-    .feature-icon {
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
-
-    .feature h3 {
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      color: #8e9caf;
-    }
-
-    /* STATUS CARDS */
-
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .status-card {
-      background: #091321;
-      border: 1px solid #182b43;
-      padding: 22px;
-      border-radius: 10px;
-    }
-
-    .status-card h4 {
-      margin-bottom: 8px;
-    }
-
-    .online {
-      color: #22c55e;
-      font-size: 14px;
-    }
-
-    /* ROADMAP */
-
-    .roadmap {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .roadmap-item {
-      display: flex;
-      gap: 20px;
-      padding: 22px;
-      margin-bottom: 15px;
-      background: #091321;
-      border: 1px solid #182b43;
-      border-radius: 10px;
-    }
-
-    .roadmap-status {
-      min-width: 110px;
-      color: #168cff;
-      font-weight: 700;
-    }
-
-    .roadmap-item p {
-      color: #8e9caf;
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-      background: linear-gradient(
-        135deg,
-        #081426,
-        #06101d
-      );
-      border-top: 1px solid #172b43;
-      border-bottom: 1px solid #172b43;
-    }
-
-    .cta h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      color: #8e9caf;
-      margin-bottom: 25px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 50px 0 25px;
-      background: #030711;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-    }
-
-    .footer-logo {
-      font-size: 25px;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-
-    footer p,
-    footer a {
-      color: #78869b;
-      font-size: 14px;
-    }
-
-    footer h4 {
-      margin-bottom: 15px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .copyright {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #142033;
-      text-align: center;
-      color: #59677b;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-      }
-
-      .plans,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .status-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .nav-buttons .btn-login {
-        display: none;
-      }
-
-      .hero {
-        min-height: 580px;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .status-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .roadmap-item {
-        flex-direction: column;
-        gap: 5px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAGRID - Premium Game Hosting</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070b14;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #0b1120;
+            border-bottom: 1px solid #1c2940;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #3b82f6;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-login {
+            background: transparent;
+            border-color: #334155;
+            color: #e2e8f0;
+        }
+
+        .btn-login:hover {
+            border-color: #3b82f6;
+            color: #60a5fa;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 110px 0 90px;
+            text-align: center;
+            background:
+                radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 45%),
+                #070b14;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border: 1px solid #1d4ed8;
+            border-radius: 999px;
+            color: #60a5fa;
+            font-size: 13px;
+            margin-bottom: 22px;
+            background: rgba(37, 99, 235, 0.08);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* STATUS BAR */
+        .status-bar {
+            padding: 18px 0;
+            background: #0b1120;
+            border-top: 1px solid #172238;
+            border-bottom: 1px solid #172238;
+        }
+
+        .status-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+        }
+
+        /* PLANS */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .plan-card {
+            background: #0d1424;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            padding: 30px;
+            transition: 0.2s;
+        }
+
+        .plan-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-4px);
+        }
+
+        .plan-card.featured {
+            border-color: #2563eb;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.12);
+        }
+
+        .plan-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #60a5fa;
+            margin-bottom: 18px;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features li {
+            color: #cbd5e1;
+            padding: 8px 0;
+            border-bottom: 1px solid #172033;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #22c55e;
+            margin-right: 9px;
+        }
+
+        .plan-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* WHY NOVAGRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #0d1424;
+            border: 1px solid #1e293b;
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(37, 99, 235, 0.15);
+            border-radius: 10px;
+            margin-bottom: 18px;
+            color: #60a5fa;
+            font-size: 22px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* STATUS */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .status-card {
+            background: #0d1424;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .status-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .operational {
+            color: #22c55e;
+            font-size: 13px;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                rgba(37, 99, 235, 0.15),
+                rgba(15, 23, 42, 0.2)
+            );
+            border-top: 1px solid #172238;
+            border-bottom: 1px solid #172238;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050810;
+            padding: 55px 0 25px;
+            border-top: 1px solid #172238;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: #64748b;
+            max-width: 350px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+        }
+
+        .copyright {
+            border-top: 1px solid #172238;
+            padding-top: 22px;
+            text-align: center;
+            color: #475569;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .plans-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 80px 0 65px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+    <!-- ==================== NAVBAR ==================== -->
 
-  <nav>
-    <div class="container nav-inner">
+    <header>
+        <div class="container navbar">
 
-      <a href="#" class="logo">
-        NOVA<span>GRID</span>
-      </a>
+            <a href="index.html" class="logo">
+                NOVAGRID
+            </a>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#plans">Hosting Plans</a></li>
-        <li><a href="#status">Status</a></li>
-        <li><a href="#development">Development</a></li>
-        <li><a href="#support">Support</a></li>
-      </ul>
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
 
-      <div class="nav-buttons">
-        <a href="#" class="btn btn-login">Login</a>
-        <a href="#" class="btn btn-primary">Sign Up</a>
-      </div>
+                <li>
+                    <a href="plans.html">Hosting Plans</a>
+                </li>
 
-    </div>
-  </nav>
+                <li>
+                    <a href="status.html">Status</a>
+                </li>
 
+                <li>
+                    <a href="support.html">Support</a>
+                </li>
 
-  <!-- HERO -->
+                <li>
+                    <a href="feedback.html">Feedback</a>
+                </li>
 
-  <section class="hero" id="home">
+                <li>
+                    <a href="faq.html">FAQ</a>
+                </li>
+            </ul>
 
-    <div class="container hero-content">
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-login">
+                    Login
+                </a>
 
-      <div class="badge">
-        ⚡ Premium Game Hosting
-      </div>
+                <a href="signup.html" class="btn btn-primary">
+                    Sign Up
+                </a>
+            </div>
 
-      <h1>
-        POWERFUL HOSTING.<br>
-        <span>BUILT FOR GAMERS.</span>
-      </h1>
-
-      <p>
-        Fast, reliable and affordable hosting for your gaming servers.
-        Get started with NOVAGRID today.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#plans" class="btn btn-primary">
-          View Hosting Plans
-        </a>
-
-        <a href="#" class="btn btn-login">
-          Get Started →
-        </a>
-      </div>
-
-    </div>
-
-  </section>
+        </div>
+    </header>
 
 
-  <!-- STATUS -->
+    <!-- ==================== HERO ==================== -->
 
-  <div class="status">
+    <main>
 
-    <div class="container">
+        <section class="hero">
 
-      <div class="status-box">
-        <span class="dot"></span>
-        All Systems Operational
-      </div>
+            <div class="container">
 
-    </div>
+                <div class="hero-badge">
+                    ⚡ Premium Game Hosting
+                </div>
 
-  </div>
+                <h1>
+                    POWERFUL HOSTING.<br>
+                    <span>BUILT FOR GAMERS.</span>
+                </h1>
+
+                <p>
+                    High-performance game hosting with reliable infrastructure,
+                    simple management, and support when you need it.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="plans.html" class="btn btn-primary">
+                        View Hosting Plans
+                    </a>
+
+                    <a href="signup.html" class="btn btn-login">
+                        Get Started →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-  <!-- HOSTING PLANS -->
+        <!-- ==================== STATUS BAR ==================== -->
 
-  <section id="plans">
+        <div class="status-bar">
 
-    <div class="container">
+            <div class="container status-content">
 
-      <div class="section-title">
-        <h2>Hosting Plans</h2>
-        <p>Choose the plan that fits your server.</p>
-      </div>
+                <span class="status-dot"></span>
 
-      <div class="plans">
+                <span>
+                    All Systems Operational
+                </span>
 
-        <div class="plan">
+                <a href="status.html" class="btn btn-login">
+                    View Status
+                </a>
 
-          <h3>Starter</h3>
-
-          <p>Perfect for small servers.</p>
-
-          <div class="price">
-            ₹99 <small>/month</small>
-          </div>
-
-          <ul class="features">
-            <li>2 GB RAM</li>
-            <li>100% SSD Storage</li>
-            <li>2 CPU Cores</li>
-            <li>DDoS Protection</li>
-            <li>24/7 Support</li>
-          </ul>
-
-          <a href="#" class="btn btn-primary">
-            Order Now
-          </a>
+            </div>
 
         </div>
 
 
-        <div class="plan featured">
+        <!-- ==================== HOSTING PLANS ==================== -->
 
-          <span class="popular">MOST POPULAR</span>
+        <section>
 
-          <h3>Pro</h3>
+            <div class="container">
 
-          <p>For growing communities.</p>
+                <div class="section-title">
 
-          <div class="price">
-            ₹199 <small>/month</small>
-          </div>
+                    <h2>
+                        Hosting Plans
+                    </h2>
 
-          <ul class="features">
-            <li>4 GB RAM</li>
-            <li>100% SSD Storage</li>
-            <li>4 CPU Cores</li>
-            <li>DDoS Protection</li>
-            <li>Automated Backups</li>
-          </ul>
+                    <p>
+                        Choose the plan that fits your server.
+                    </p>
 
-          <a href="#" class="btn btn-primary">
-            Order Now
-          </a>
+                </div>
+
+
+                <div class="plans-grid">
+
+                    <!-- STARTER -->
+
+                    <div class="plan-card">
+
+                        <h3>
+                            Starter
+                        </h3>
+
+                        <div class="price">
+                            ₹99 <span>/month</span>
+                        </div>
+
+                        <ul class="features">
+                            <li>2 GB RAM</li>
+                            <li>50 GB SSD Storage</li>
+                            <li>Unlimited Players</li>
+                            <li>DDoS Protection</li>
+                            <li>24/7 Monitoring</li>
+                        </ul>
+
+                        <a href="plans.html" class="btn btn-primary">
+                            Order Now
+                        </a>
+
+                    </div>
+
+
+                    <!-- PRO -->
+
+                    <div class="plan-card featured">
+
+                        <h3>
+                            Pro
+                        </h3>
+
+                        <div class="price">
+                            ₹199 <span>/month</span>
+                        </div>
+
+                        <ul class="features">
+                            <li>4 GB RAM</li>
+                            <li>80 GB SSD Storage</li>
+                            <li>Unlimited Players</li>
+                            <li>DDoS Protection</li>
+                            <li>Priority Support</li>
+                        </ul>
+
+                        <a href="plans.html" class="btn btn-primary">
+                            Order Now
+                        </a>
+
+                    </div>
+
+
+                    <!-- PREMIUM -->
+
+                    <div class="plan-card">
+
+                        <h3>
+                            Premium
+                        </h3>
+
+                        <div class="price">
+                            ₹399 <span>/month</span>
+                        </div>
+
+                        <ul class="features">
+                            <li>8 GB RAM</li>
+                            <li>160 GB SSD Storage</li>
+                            <li>Unlimited Players</li>
+                            <li>Advanced DDoS Protection</li>
+                            <li>Priority Support</li>
+                        </ul>
+
+                        <a href="plans.html" class="btn btn-primary">
+                            Order Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== WHY NOVAGRID ==================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>
+                        Why NOVAGRID?
+                    </h2>
+
+                    <p>
+                        Everything you need to run your game servers.
+                    </p>
+
+                </div>
+
+
+                <div class="features-grid">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            High Performance
+                        </h3>
+
+                        <p>
+                            Powerful infrastructure designed to deliver
+                            smooth and reliable gaming performance.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🛡️
+                        </div>
+
+                        <h3>
+                            DDoS Protection
+                        </h3>
+
+                        <p>
+                            Protection designed to help keep your
+                            game servers online and accessible.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🎮
+                        </div>
+
+                        <h3>
+                            Gamer Focused
+                        </h3>
+
+                        <p>
+                            Hosting features designed around the needs
+                            of gaming communities and server owners.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🚀
+                        </div>
+
+                        <h3>
+                            Easy Management
+                        </h3>
+
+                        <p>
+                            Simple server management so you can spend
+                            less time dealing with infrastructure.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💬
+                        </div>
+
+                        <h3>
+                            Support
+                        </h3>
+
+                        <p>
+                            Get help through the NOVAGRID support system
+                            whenever you need assistance.
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💰
+                        </div>
+
+                        <h3>
+                            Affordable Plans
+                        </h3>
+
+                        <p>
+                            Flexible hosting plans designed for different
+                            server sizes and budgets.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SYSTEM STATUS ==================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>
+                        System Status
+                    </h2>
+
+                    <p>
+                        Check the current status of NOVAGRID services.
+                    </p>
+
+                </div>
+
+
+                <div class="status-grid">
+
+                    <div class="status-card">
+
+                        <h3>
+                            Website
+                        </h3>
+
+                        <div class="operational">
+                            ● Operational
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <h3>
+                            Client Panel
+                        </h3>
+
+                        <div class="operational">
+                            ● Operational
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <h3>
+                            Game Servers
+                        </h3>
+
+                        <div class="operational">
+                            ● Operational
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-card">
+
+                        <h3>
+                            API
+                        </h3>
+
+                        <div class="operational">
+                            ● Operational
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div style="text-align:center; margin-top:30px;">
+
+                    <a href="status.html" class="btn btn-primary">
+                        View Full Status
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== SUPPORT CTA ==================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <h2>
+                    Need Help?
+                </h2>
+
+                <p>
+                    Contact NOVAGRID support or check our frequently asked questions.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="support.html" class="btn btn-primary">
+                        Contact Support
+                    </a>
+
+                    <a href="faq.html" class="btn btn-login">
+                        View FAQ
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== ACCOUNT CTA ==================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <h2>
+                    Ready to Start?
+                </h2>
+
+                <p>
+                    Create your NOVAGRID account and get started with your server.
+                </p>
+
+                <a href="signup.html" class="btn btn-primary">
+                    Create Your Account
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <!-- BRAND -->
+
+                <div class="footer-brand">
+
+                    <div class="logo">
+                        NOVAGRID
+                    </div>
+
+                    <p>
+                        Premium game hosting built for gamers,
+                        communities, and server owners.
+                    </p>
+
+                </div>
+
+
+                <!-- PLATFORM -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Platform
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="plans.html">
+                            Hosting Plans
+                        </a>
+
+                        <a href="status.html">
+                            Status
+                        </a>
+
+                        <a href="faq.html">
+                            FAQ
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUPPORT -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Support
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="support.html">
+                            Support
+                        </a>
+
+                        <a href="feedback.html">
+                            Feedback
+                        </a>
+
+                        <a href="login.html">
+                            Login
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCOUNT -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <div class="footer-links">
+
+                        <a href="signup.html">
+                            Create Account
+                        </a>
+
+                        <a href="login.html">
+                            Sign In
+                        </a>
+
+                        <a href="plans.html">
+                            Get Hosting
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+                © 2026 NOVAGRID. All rights reserved.
+            </div>
 
         </div>
 
-
-        <div class="plan">
-
-          <h3>Premium</h3>
-
-          <p>For large communities.</p>
-
-          <div class="price">
-            ₹399 <small>/month</small>
-          </div>
-
-          <ul class="features">
-            <li>8 GB RAM</li>
-            <li>NVMe Storage</li>
-            <li>6 CPU Cores</li>
-            <li>DDoS Protection</li>
-            <li>Priority Support</li>
-          </ul>
-
-          <a href="#" class="btn btn-primary">
-            Order Now
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FEATURES -->
-
-  <section>
-
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Why NOVAGRID?</h2>
-        <p>Everything you need to run your server.</p>
-      </div>
-
-      <div class="feature-grid">
-
-        <div class="feature">
-          <div class="feature-icon">⚡</div>
-          <h3>High Performance</h3>
-          <p>
-            Powerful infrastructure designed to keep your servers running smoothly.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🛡️</div>
-          <h3>DDoS Protection</h3>
-          <p>
-            Protection designed to help keep your server online.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🎮</div>
-          <h3>Gaming Optimized</h3>
-          <p>
-            Infrastructure designed specifically for gaming workloads.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">💾</div>
-          <h3>Backups</h3>
-          <p>
-            Keep important server data safer with backup options.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">🎫</div>
-          <h3>Support Tickets</h3>
-          <p>
-            Get help through our customer support ticket system.
-          </p>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">📊</div>
-          <h3>Easy Management</h3>
-          <p>
-            Manage your hosting services from your customer dashboard.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STATUS -->
-
-  <section id="status">
-
-    <div class="container">
-
-      <div class="section-title">
-        <h2>System Status</h2>
-        <p>Check the current status of our services.</p>
-      </div>
-
-      <div class="status-grid">
-
-        <div class="status-card">
-          <h4>Website</h4>
-          <span class="online">● Operational</span>
-        </div>
-
-        <div class="status-card">
-          <h4>Client Panel</h4>
-          <span class="online">● Operational</span>
-        </div>
-
-        <div class="status-card">
-          <h4>Game Servers</h4>
-          <span class="online">● Operational</span>
-        </div>
-
-        <div class="status-card">
-          <h4>API</h4>
-          <span class="online">● Operational</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- DEVELOPMENT -->
-
-  <section id="development">
-
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Development Roadmap</h2>
-        <p>See what's coming to NOVAGRID.</p>
-      </div>
-
-      <div class="roadmap">
-
-        <div class="roadmap-item">
-          <div class="roadmap-status">COMPLETED</div>
-          <div>
-            <h3>Hosting Website</h3>
-            <p>Launch the NOVAGRID website.</p>
-          </div>
-        </div>
-
-        <div class="roadmap-item">
-          <div class="roadmap-status">IN DEVELOPMENT</div>
-          <div>
-            <h3>Client Dashboard</h3>
-            <p>Manage hosting services from one place.</p>
-          </div>
-        </div>
-
-        <div class="roadmap-item">
-          <div class="roadmap-status">PLANNED</div>
-          <div>
-            <h3>Automatic Server Deployment</h3>
-            <p>Automatically create hosting services after purchase.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CTA -->
-
-  <section class="cta" id="support">
-
-    <div class="container">
-
-      <h2>Ready to get started?</h2>
-
-      <p>
-        Join NOVAGRID and launch your server today.
-      </p>
-
-      <a href="#" class="btn btn-primary">
-        Create Your Account
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <div class="footer-logo">
-            NOVA<span style="color:#168cff;">GRID</span>
-          </div>
-
-          <p>
-            Powerful and reliable hosting built for gamers.
-          </p>
-        </div>
-
-        <div>
-          <h4>Platform</h4>
-
-          <div class="footer-links">
-            <a href="#plans">Hosting Plans</a>
-            <a href="#status">Status</a>
-            <a href="#development">Development</a>
-          </div>
-        </div>
-
-        <div>
-          <h4>Support</h4>
-
-          <div class="footer-links">
-            <a href="#">Login</a>
-            <a href="#">Sign Up</a>
-            <a href="#">Support</a>
-          </div>
-        </div>
-
-        <div>
-          <h4>Community</h4>
-
-          <div class="footer-links">
-            <a href="#">Discord</a>
-            <a href="#">Feedback</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="copyright">
-        © 2026 NOVAGRID. All rights reserved.
-      </div>
-
-    </div>
-
-  </footer>
+    </footer>
 
 </body>
 </html>
