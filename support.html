@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAGRID - Support</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #070b14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: #0b1120;
+      padding: 18px 8%;
+      border-bottom: 1px solid #17233d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #2196ff;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    nav a:hover {
+      color: #2196ff;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .box {
+      background: #0d1526;
+      border: 1px solid #1b3155;
+      border-radius: 15px;
+      padding: 35px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8995a8;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 20px;
+      background: #080e1c;
+      border: 1px solid #263958;
+      border-radius: 8px;
+      color: white;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2196ff;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #2196ff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #087bd4;
+    }
+
+    .info {
+      margin-top: 25px;
+      padding: 18px;
+      background: #080e1c;
+      border: 1px solid #172b49;
+      border-radius: 10px;
+    }
+
+    .info h3 {
+      color: #2196ff;
+      margin-bottom: 8px;
+    }
+
+    .info p {
+      color: #8995a8;
+      line-height: 1.6;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #8995a8;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #68758a;
+      border-top: 1px solid #17233d;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">NOVAGRID</a>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="plans.html">Plans</a>
+      <a href="status.html">Status</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="box">
+
+      <h1>Contact Support</h1>
+
+      <p class="subtitle">
+        Need help? Open a support ticket.
+      </p>
+
+      <form>
+
+        <label>Subject</label>
+
+        <input
+          type="text"
+          placeholder="Example: Server is offline"
+          required
+        >
+
+        <label>Category</label>
+
+        <select required>
+          <option value="">Select a category</option>
+          <option>Technical Support</option>
+          <option>Billing</option>
+          <option>Account</option>
+          <option>Server Issue</option>
+          <option>Other</option>
+        </select>
+
+        <label>Priority</label>
+
+        <select required>
+          <option value="">Select priority</option>
+          <option>Low</option>
+          <option>Normal</option>
+          <option>High</option>
+        </select>
+
+        <label>Message</label>
+
+        <textarea
+          placeholder="Explain your problem..."
+          required
+        ></textarea>
+
+        <button type="submit" class="submit-btn">
+          Create Support Ticket
+        </button>
+
+      </form>
+
+      <div class="info">
+        <h3>Already have an account?</h3>
+        <p>
+          Login to your NOVAGRID account to view your existing
+          tickets and replies from the support team.
+        </p>
+      </div>
+
+      <a href="index.html" class="back">
+        ← Back to Home
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 NOVAGRID. All rights reserved.
+  </footer>
+
+</body>
+</html>
